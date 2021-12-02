@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is the survey page.">
+    <style>
+         nav
+        {
+            background-color: #74A4BC;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav ul
+        {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        nav ul li
+        {
+            padding: 0px;
+        }
+
+        nav ul li a
+        {
+            display: block;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        nav ul li a:hover
+        {
+            color: black;
+        }
+
+        .survey-content
+        {
+            text-align: center;
+        }
+
+        form label, form div
+        {
+            display: block;
+            padding-top: 1rem;
+        }
+
+        form fieldset
+        {
+            border: 1px solid #445ba9;
+            border-radius: 10px;
+            padding: .5rem 2%;
+            color:#29339B;
+            margin: 0 auto;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .thanks
+        {
+            border: 1px solid #445ba9;
+            border-radius: 10px;
+            margin-top: 25px;
+        }
+
+        .thanks h1
+        {
+            text-align: center;
+            color: #29339B;
+            margin-bottom: 50px;
+        }
+
+        .thanks p
+        {
+            text-align: center;
+            color: #29339B;
+        }
+
+        .stormtitle
+        {
+            text-align: center;
+            color: #29339B;
+        }
+
+        .ta 
+        {
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        .submit
+        {
+            border-radius: 5px;
+            padding: 7px;
+            margin-bottom: 10px;
+        }
+
+        .zc
+        {
+            margin-bottom: 10px;
+        }
+
+        input[type = 'text'], input[type = 'date'], input[type = 'email'], input[type = 'number'], input[type = 'tel'], input[type = 'range'], textarea
+        {
+            display: flex;
+            width: 75%;
+            margin-top: 2px;
+        }
+    </style>
+    <title>Pizza Survey</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li class="active"><a href="/survey">Survey</a></li>
+        </ul>
+    </nav>
+    <div class="survey-content">
+    <h1 class="stormtitle">Pizza Survey</h1>
+    <form method="post" action="/register" class="report">
+        <fieldset>
+            <legend>Contact Information</legend>
+            <label>Full Name* <input type="text" name="fullname" pattern="[A-Za-z]{5}*" required></label>
+            <label>Email <input type="email" name="email" placeholder="someone@outlook.com"></label>
+            <label>Phone Number* <input type="tel" name="phone" required></label>
+            <label class="zc">Zip Code* <input type="number" name="zipcode" required></label>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Pizza Order Information</legend>
+            <label>Order Date<br><input type="date" name="order-date" min="2021-01-01" max="2200-01-01"></label>
+            <label>Order Type 
+                <input type="text" list="pizzas" name="pizza-type" id="pizza">
+                    <datalist id="pizzas">
+                    <option value="Pepperoni">
+                    <option value="Cheese">
+                    <option value="Meat lovers">
+                    <option value="Hawaiian">
+                    <option value="Vegetarian">
+                    <option value="Mushrooms"></option>
+                    <option value="Supreme"></option>
+                    </datalist>
+            </label>
+            <label>Have you eaten our pizza before?</label>
+            <label><input type="radio" name="eatenPizza" value="yes"> Yes</label>
+            <label class="no"><input type="radio" name="eatenPizza" value="no"> No</label>
+            <label>Satisfaction Level <input type="range" name="range" value="0" min="0" max="10" oninput="changeRange(this.value)" 
+                onchange="changeRange(this.value)">
+            </label>
+            <span id="rangeChange"></span>
+            <label>Would you recommend us to a friend?</label>
+            <label><input type="radio" name="recommendLevel" value="yes"> Yes</label>
+            <label><input type="radio" name="recommendLevel" value="maybe"> Maybe</label>
+            <label class="no"><input type="radio" name="recommendLevel" value="no"> No</label>
+            <label>Would you be interested in receiving emails about our latest promos?</label>
+            <label><input type="radio" name="interestLevel" value="yes"> Yes</label>
+            <label class="no"><input type="radio" name="interestLevel" value="no"> No</label>
+            <label> Please include any more important information below: <textarea class="ta" name="comments" rows="5" cols="50"></textarea></label>
+            <label><input type="submit" class="submit" name="submitBtn" value="Give Feedback"></label>
+        </fieldset>
+    </form>
+    </div>
+    <script>
+        function changeRange(range)
+        {
+            document.querySelector('#rangeChange').innerHTML = range;
+        }
+    </script>
+</body>
+</html>
